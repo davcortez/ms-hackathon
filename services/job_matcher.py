@@ -9,7 +9,7 @@ from fastapi import HTTPException
 from internal.prompt_template import input_prompt
 from internal.config import get_settings
 from google.api_core import exceptions as api_errors
-from schemas.job_match import JobMatchRequest
+from schemas.job_match import JobMatchRequest, JobMatchResponse
 
 
 settings = get_settings()
@@ -42,7 +42,7 @@ def get_match(*, payload: JobMatchRequest):
     except (api_errors.InternalServerError, api_errors.ResourceExhausted) as error:
         raise HTTPException(status_code=400, detail=error.response["Error"])
 
-    return _extract_json(response.text)
+    return JobMatchResponse(**_extract_json(response.text))
 
 
 def _extract_json(text_response):

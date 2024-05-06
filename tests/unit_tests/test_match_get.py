@@ -98,5 +98,8 @@ def test_get_match_results(job_description, resume_text):
 
     response = get_match(payload=payload)
 
-    assert response["job_description_match"]
-    assert response["profile_summary"]
+    assert {
+        "job_description_match",
+        "missing_keywords",
+        "profile_summary",
+    } <= response.model_dump().keys()
