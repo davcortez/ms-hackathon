@@ -1,5 +1,6 @@
 import pytest
 from services.job_matcher import get_match
+from schemas.job_match import JobMatchRequest
 
 
 @pytest.fixture
@@ -93,7 +94,9 @@ def test_get_match_results(job_description, resume_text):
     """
     Test that the match between the job offer and the candidate occurs.
     """
-    response = get_match(job_description=job_description, resume_text=resume_text)
+    payload = JobMatchRequest(job_description=job_description, resume_text=resume_text)
+
+    response = get_match(payload=payload)
 
     assert response["job_description_match"]
     assert response["profile_summary"]

@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from internal.prompt_template import input_prompt
 from internal.config import get_settings
 from google.api_core import exceptions as api_errors
+from schemas.job_match import JobMatchRequest
 
 
 settings = get_settings()
@@ -16,7 +17,7 @@ settings = get_settings()
 genai.configure(api_key=settings.gemini_api_key)
 
 
-def get_match(*, job_description: str, resume_text: str):
+def get_match(*, payload: JobMatchRequest):
     """Get the results of the match analysis between the
     job description and the resume text of the candidate
 
@@ -32,8 +33,8 @@ def get_match(*, job_description: str, resume_text: str):
 
     optimized_prompt = [
         input_prompt,
-        "Job Description\n" + job_description,
-        "Resume \n" + resume_text,
+        "Job Description\n" + payload.job_description,
+        "Resume \n" + payload.resume_text,
     ]
 
     try:
