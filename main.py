@@ -1,9 +1,7 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from routers import job_matcher
+
 
 app = FastAPI()
 
-
-@app.get("/")
-def home():
-    return {"message": "hello"}
+app.include_router(job_matcher.router)
