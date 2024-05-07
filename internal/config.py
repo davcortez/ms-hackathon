@@ -9,10 +9,10 @@ class Settings(BaseSettings):
     environment: str
     gemini_api_key: str
 
-    # cors_allow_credentials: bool = False
-    # cors_http_methods: list
-    # cors_headers: list
-    # cors_origins: list
+    cors_allow_credentials: bool = False
+    cors_http_methods: list
+    cors_headers: list
+    cors_origins: list
 
     model_config = SettingsConfigDict(env_file=".env")
 
