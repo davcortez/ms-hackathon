@@ -8,5 +8,5 @@ class JobMatchRequest(BaseModel):
 
 class JobMatchResponse(BaseModel):
     job_description_match: str
-    missing_keywords: list
+    matching_keywords: list
     profile_summary: str
