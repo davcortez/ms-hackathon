@@ -1,9 +1,9 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, Security
 from schemas.job_match import JobMatchRequest, JobMatchResponse
 from services.job_matcher import get_match
+from internal.auth import get_token
 
-
-router = APIRouter(prefix="/v1", tags=["main"])
+router = APIRouter(prefix="/v1", dependencies=[Security(get_token)], tags=["main"])
 
 
 @router.post(

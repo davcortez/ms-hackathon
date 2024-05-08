@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     cors_headers: list
     cors_origins: list
 
+    api_keys: list
+
     model_config = SettingsConfigDict(env_file=".env")
 
 
