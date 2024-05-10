@@ -8,7 +8,7 @@ on Job description and
 the matching keywords with high accuracy
 
 I want the response as per below structure
-{"job_description_match": "%",
+{"job_description_match": "",
 "matching_keywords": [],
 "profile_summary": ""}
 """
