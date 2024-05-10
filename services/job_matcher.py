@@ -16,6 +16,8 @@ settings = get_settings()
 
 genai.configure(api_key=settings.gemini_api_key)
 
+model_config = {"temperature": 0.3, "top_p": 1, "top_k": 32, "max_output_tokens": 4096}
+
 
 def get_match(*, payload: JobMatchRequest):
     """Get the results of the match analysis between the
@@ -29,7 +31,7 @@ def get_match(*, payload: JobMatchRequest):
         the job description to be compared with the candidate's resume
 
     """
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("gemini-pro", generation_config=model_config)
 
     optimized_prompt = [
         input_prompt,
