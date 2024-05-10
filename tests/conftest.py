@@ -5,7 +5,7 @@ from main import app
 
 @pytest.fixture
 def client():
-    client = TestClient(app=app)
+    client = TestClient(app=app, headers={"Authorization": "Bearer 31a64525"})
     yield client
 
 

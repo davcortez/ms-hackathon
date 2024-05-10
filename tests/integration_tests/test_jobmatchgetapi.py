@@ -13,6 +13,6 @@ def test_get_match(client, job_description, resume_text):
     assert response.status_code == status.HTTP_200_OK
     assert {
         "job_description_match",
-        "missing_keywords",
+        "matching_keywords",
         "profile_summary",
     } <= response.json().keys()

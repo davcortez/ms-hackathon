@@ -12,6 +12,6 @@ def test_get_match_results(job_description, resume_text):
 
     assert {
         "job_description_match",
-        "missing_keywords",
+        "matching_keywords",
         "profile_summary",
     } <= response.model_dump().keys()
